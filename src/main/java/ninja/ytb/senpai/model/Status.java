@@ -1,57 +1,101 @@
 package ninja.ytb.senpai.model;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 @Entity
-public class Status {
-	
+@Table(name = "status")
+public class Status extends GenericEntity {
+
+	private static final long serialVersionUID = -8544400401302390885L;
+
 	public Status() {
 	}
 	
-	@Id
-	public long id;
+	@ManyToOne
+	private User user;
+	
+	@ManyToOne
+	private Team team;
+	
+	private LocalDateTime submittedOn;
+	private LocalDateTime statusDate;
+	private LocalDateTime lastEdited;
 	
 	@ElementCollection(targetClass=String.class)
-	public List<String> yesterday;
+	private List<String> yesterday;
 	
 	@ElementCollection(targetClass=String.class)
-	public List<String> today;
+	private List<String> today;
 	
 	@ElementCollection(targetClass=String.class)
-	public List<String> blockers;
-	
-	public final long getId() {
-		return id;
+	private List<String> blockers;
+
+	public final User getUser() {
+		return user;
 	}
-	
-	public final void setId(final long id) {
-		this.id = id;
+
+	public final void setUser(final User user) {
+		this.user = user;
 	}
-	
+
+	public final Team getTeam() {
+		return team;
+	}
+
+	public final void setTeam(final Team team) {
+		this.team = team;
+	}
+
+	public final LocalDateTime getSubmittedOn() {
+		return submittedOn;
+	}
+
+	public final void setSubmittedOn(final LocalDateTime submittedOn) {
+		this.submittedOn = submittedOn;
+	}
+
+	public final LocalDateTime getStatusDate() {
+		return statusDate;
+	}
+
+	public final void setStatusDate(final LocalDateTime statusDate) {
+		this.statusDate = statusDate;
+	}
+
+	public final LocalDateTime getLastEdited() {
+		return lastEdited;
+	}
+
+	public final void setLastEdited(final LocalDateTime lastEdited) {
+		this.lastEdited = lastEdited;
+	}
+
 	public final List<String> getYesterday() {
 		return yesterday;
 	}
-	
+
 	public final void setYesterday(final List<String> yesterday) {
 		this.yesterday = yesterday;
 	}
-	
+
 	public final List<String> getToday() {
 		return today;
 	}
-	
+
 	public final void setToday(final List<String> today) {
 		this.today = today;
 	}
-	
+
 	public final List<String> getBlockers() {
 		return blockers;
 	}
-	
+
 	public final void setBlockers(final List<String> blockers) {
 		this.blockers = blockers;
 	}

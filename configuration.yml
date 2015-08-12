@@ -1,11 +1,12 @@
 database:
   driverClass: org.postgresql.Driver
   user: postgres
-  url: jdbc:postgresql://192.168.99.100:32777/
+  url: jdbc:postgresql://192.168.99.100:32777/senpai
 
   properties:
     charSet: UTF-8
     hibernate.dialect: org.hibernate.dialect.PostgreSQLDialect
+    hibernate.hbm2ddl.auto: create
 
   maxWaitForConnection: 1s
   validationQuery: "/* MyApplication Health Check */ SELECT 1"
