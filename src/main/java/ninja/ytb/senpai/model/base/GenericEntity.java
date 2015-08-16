@@ -1,4 +1,4 @@
-package ninja.ytb.senpai.model;
+package ninja.ytb.senpai.model.base;
 
 import java.io.Serializable;
 import java.util.UUID;

@@ -1,11 +1,13 @@
-package ninja.ytb.senpai.model;
+package ninja.ytb.senpai.models;
 
-import java.util.Set;
+import java.util.Collection;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import ninja.ytb.senpai.model.base.GenericEntity;
 
 @Entity
 @Table(name = "siteuser")
@@ -18,8 +20,8 @@ public class User extends GenericEntity {
 	
 	private String fullname;
 	
-	@OneToMany
-	private Set<Organization> organizations;
+	@OneToMany(mappedBy = "user")
+	private Collection<Membership> memberships;
 
 	public final String getEmail() {
 		return email;
@@ -37,12 +39,11 @@ public class User extends GenericEntity {
 		this.fullname = fullname;
 	}
 
-	public final Set<Organization> getOrganizations() {
-		return organizations;
+	public final Collection<Membership> getMemberships() {
+		return memberships;
 	}
 
-	public final void setOrganizations(final Set<Organization> organizations) {
-		this.organizations = organizations;
+	public final void setMemberships(final Collection<Membership> memberships) {
+		this.memberships = memberships;
 	}
-
 }
