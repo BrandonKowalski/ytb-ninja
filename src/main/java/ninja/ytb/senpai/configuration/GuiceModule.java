@@ -5,11 +5,13 @@ import javax.inject.Singleton;
 import org.hibernate.SessionFactory;
 
 import com.google.inject.AbstractModule;
+import com.google.inject.Provides;
 import com.google.inject.TypeLiteral;
 import com.google.inject.name.Names;
 
 import io.dropwizard.hibernate.HibernateBundle;
 import ninja.ytb.senpai.inject.SessionFactoryProvider;
+import ninja.ytb.senpai.oauth.GithubOAuthConfig;
 
 @Singleton
 public class GuiceModule extends AbstractModule {
@@ -24,7 +26,12 @@ public class GuiceModule extends AbstractModule {
 	protected void configure() {
 		bind(new TypeLiteral<HibernateBundle<SenpaiConfiguration>>() {
 		}).annotatedWith(Names.named("HibernateBundle")).toInstance(hibernateBundle);
-		
+
 		bind(SessionFactory.class).toProvider(SessionFactoryProvider.class);
+	}
+
+	@Provides
+	public GithubOAuthConfig providesSomethingThatNeedsConfiguration(SenpaiConfiguration configuration) {
+		return configuration.getGithubConfig();
 	}
 }

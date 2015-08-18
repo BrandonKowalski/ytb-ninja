@@ -12,30 +12,30 @@ import com.google.inject.Inject;
 
 import io.dropwizard.hibernate.UnitOfWork;
 import ninja.ytb.senpai.annotations.SenpaiResource;
-import ninja.ytb.senpai.models.Project;
+import ninja.ytb.senpai.models.Team;
 import ninja.ytb.senpai.services.OrganizationalUnitService;
 
 @SenpaiResource
-@Path("/projects")
+@Path("/teams")
 @Produces(MediaType.APPLICATION_JSON)
-public class ProjectResource {
+public class TeamResource {
 	
-	private final OrganizationalUnitService<Project> projectService;
+	private final OrganizationalUnitService<Team> teamService;
 	
 	@Inject
-	public ProjectResource(final OrganizationalUnitService<Project> projectService) {
-		this.projectService = projectService;
+	public TeamResource(final OrganizationalUnitService<Team> teamService) {
+		this.teamService = teamService;
 	}
 	
 	@POST
 	@UnitOfWork
-	public final Project createOrganization(final Project project) {
-		return projectService.create(project);
+	public final Team createOrganization(final Team team) {
+		return teamService.create(team);
 	}
 	
 	@GET
 	@UnitOfWork
-	public final List<Project> fetchProjects() {
-		return projectService.read("Projects.All");
+	public final List<Team> fetchProjects() {
+		return teamService.read("Team.All");
 	}
 }

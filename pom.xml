@@ -73,6 +73,11 @@
 			<version>0.8.1.2</version>
 		</dependency>
 		<dependency>
+			<groupId>org.secnod.dropwizard</groupId>
+			<artifactId>dropwizard-shiro</artifactId>
+			<version>0.2.0</version>
+		</dependency>
+		<dependency>
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
 			<version>9.4-1201-jdbc41</version>
@@ -97,6 +102,11 @@
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-collections4</artifactId>
 			<version>4.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.oltu.oauth2</groupId>
+			<artifactId>org.apache.oltu.oauth2.client</artifactId>
+			<version>1.0.0</version>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>

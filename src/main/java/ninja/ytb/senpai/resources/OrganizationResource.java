@@ -38,5 +38,4 @@ public class OrganizationResource {
 	public final List<Organization> fetchOrganizations() {
 		return organizationService.read("Organizations.All");
 	}
-
 }

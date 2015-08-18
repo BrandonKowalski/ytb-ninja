@@ -77,5 +77,4 @@ public abstract class OrganizationalUnit extends GenericEntity {
 	public final void setSubordinates(final Collection<OrganizationalUnit> subordinates) {
 		this.subordinates = subordinates;
 	}
-
 }

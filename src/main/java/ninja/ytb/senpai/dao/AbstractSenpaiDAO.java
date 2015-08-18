@@ -43,7 +43,4 @@ public abstract class AbstractSenpaiDAO<T, I extends Serializable> extends Abstr
 	public final T find(final I id) {
 		return super.get(id);
 	}
-	
-	
-	
 }
