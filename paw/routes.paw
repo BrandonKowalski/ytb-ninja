@@ -69,7 +69,7 @@
         <attribute name="redirectauthorization" type="bool">0</attribute>
         <attribute name="method" type="string">POST</attribute>
         <attribute name="followredirects" type="bool">0</attribute>
-        <attribute name="body" type="string">[{"data":{"json":"{\\"name\\":\\"Kowalski.io\\"}"},"identifier":"com.luckymarmot.JSONDynamicValue"}]</attribute>
+        <attribute name="body" type="string">[{"data":{"json":"{\\"name\\":\\"Envisage\\"}"},"identifier":"com.luckymarmot.JSONDynamicValue"}]</attribute>
         <attribute name="order" type="int64">1</attribute>
         <attribute name="name" type="string">Create Organization</attribute>
         <relationship name="parent" type="0/1" destination="LMREQUESTTREEITEM"></relationship>
@@ -96,13 +96,13 @@
         <attribute name="order" type="int64">0</attribute>
         <attribute name="name" type="string">uri</attribute>
         <relationship name="domain" type="0/1" destination="LMENVIRONMENTDOMAIN" idrefs="z110"></relationship>
-        <relationship name="values" type="0/0" destination="LMENVIRONMENTVARIABLEVALUE" idrefs="z111 z124"></relationship>
+        <relationship name="values" type="0/0" destination="LMENVIRONMENTVARIABLEVALUE" idrefs="z111"></relationship>
     </object>
     <object type="LMENVIRONMENTDOMAIN" id="z110">
         <attribute name="uuid" type="string">83779C71-61F7-4A81-AC56-8ACD2B1B0886</attribute>
         <attribute name="order" type="int64">0</attribute>
         <attribute name="name" type="string">Dev</attribute>
-        <relationship name="environments" type="0/0" destination="LMENVIRONMENT" idrefs="z112 z123"></relationship>
+        <relationship name="environments" type="0/0" destination="LMENVIRONMENT" idrefs="z112"></relationship>
         <relationship name="variables" type="0/0" destination="LMENVIRONMENTVARIABLE" idrefs="z109"></relationship>
     </object>
     <object type="LMENVIRONMENTVARIABLEVALUE" id="z111">
@@ -174,7 +174,7 @@
         <attribute name="redirectauthorization" type="bool">0</attribute>
         <attribute name="method" type="string">POST</attribute>
         <attribute name="followredirects" type="bool">0</attribute>
-        <attribute name="body" type="string">[{"data":{"json":"{\\"name\\":\\"TPA Payroll\\",\\"superior\\":{\\"id\\":\\"634ce222-022c-4eef-ab0f-edf7f04e08c8\\",\\"type\\":\\"TEAM\\"}}"},"identifier":"com.luckymarmot.JSONDynamicValue"}]</attribute>
+        <attribute name="body" type="string">[{"data":{"json":"{\\"name\\":\\"TPA Payroll\\",\\"superior\\":{\\"id\\":\\"\\",\\"type\\":\\"TEAM\\"}}"},"identifier":"com.luckymarmot.JSONDynamicValue"}]</attribute>
         <attribute name="order" type="int64">4</attribute>
         <attribute name="name" type="string">Create Project</attribute>
         <relationship name="parent" type="0/1" destination="LMREQUESTTREEITEM"></relationship>
@@ -223,7 +223,7 @@
         <attribute name="redirectauthorization" type="bool">0</attribute>
         <attribute name="method" type="string">POST</attribute>
         <attribute name="followredirects" type="bool">0</attribute>
-        <attribute name="body" type="string">[{"data":{"json":"{\\"name\\":\\"Solutions\\",\\"superior\\":{\\"id\\":\\"d4ea663e-81fb-4847-976e-3debeffb0bfc\\",\\"type\\":\\"ORGANIZATION\\"}}"},"identifier":"com.luckymarmot.JSONDynamicValue"}]</attribute>
+        <attribute name="body" type="string">[{"data":{"json":"{\\"name\\":\\"Solutions\\",\\"superior\\":{\\"id\\":\\"\\",\\"type\\":\\"ORGANIZATION\\"}}"},"identifier":"com.luckymarmot.JSONDynamicValue"}]</attribute>
         <attribute name="order" type="int64">3</attribute>
         <attribute name="name" type="string">Create Team</attribute>
         <relationship name="parent" type="0/1" destination="LMREQUESTTREEITEM"></relationship>
@@ -237,17 +237,5 @@
         <relationship name="groupforheaders" type="0/1" destination="LMREQUESTGROUP"></relationship>
         <relationship name="groupforurlparameters" type="0/1" destination="LMREQUESTGROUP"></relationship>
         <relationship name="request" type="0/1" destination="LMREQUEST" idrefs="z121"></relationship>
-    </object>
-    <object type="LMENVIRONMENT" id="z123">
-        <attribute name="uuid" type="string">418A992C-890F-4C44-911B-C9976D41C64A</attribute>
-        <attribute name="order" type="int64">1</attribute>
-        <attribute name="name" type="string">Kong</attribute>
-        <relationship name="domain" type="0/1" destination="LMENVIRONMENTDOMAIN" idrefs="z110"></relationship>
-        <relationship name="variablesvalues" type="0/0" destination="LMENVIRONMENTVARIABLEVALUE" idrefs="z124"></relationship>
-    </object>
-    <object type="LMENVIRONMENTVARIABLEVALUE" id="z124">
-        <attribute name="value" type="string">http://localhost:8000/ytb/</attribute>
-        <relationship name="environment" type="1/1" destination="LMENVIRONMENT" idrefs="z123"></relationship>
-        <relationship name="variable" type="1/1" destination="LMENVIRONMENTVARIABLE" idrefs="z109"></relationship>
     </object>
 </database>

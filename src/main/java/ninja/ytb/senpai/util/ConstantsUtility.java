@@ -10,6 +10,7 @@ public final class ConstantsUtility {
 	
 	public static final String ENTITY_ID_FIELD_NAME = "id";
 	
+	public static final String OAUTH_REALM_NAME = "OAUTH";
 	
 	public final class OAuthEndpoints {
 		public static final String GITHUB_API_ROOT = "https://api.github.com";

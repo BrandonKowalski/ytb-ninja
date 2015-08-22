@@ -56,7 +56,6 @@ public class OAuthService {
 			final String httpMethod) {
 		OAuthResourceResponse resourceResponse = null;
 		try {
-
 			OAuthClient oAuthClient = new OAuthClient(new URLConnectionClient());
 
 			OAuthClientRequest bearerClientRequest = new OAuthBearerClientRequest(apiEndpoint)

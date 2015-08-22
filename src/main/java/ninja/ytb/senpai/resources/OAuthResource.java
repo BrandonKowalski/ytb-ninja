@@ -1,5 +1,6 @@
 package ninja.ytb.senpai.resources;
 
+import java.net.URI;
 import java.util.Optional;
 
 import javax.ws.rs.GET;
@@ -7,6 +8,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
 import org.apache.oltu.oauth2.common.OAuthProviderType;
 import org.slf4j.Logger;
@@ -39,7 +41,8 @@ public class OAuthResource {
 	@GET
 	@Path("/github")
 	@UnitOfWork
-	public final String github(@QueryParam("code") final String code) {
+	public final Response github(@QueryParam("code") final String code) {
+		URI redirect = null;
 		try {
 			Optional<String> accessToken = oAuthService.retrieveGithubToken(code);
 
@@ -47,10 +50,12 @@ public class OAuthResource {
 				OAuthToken oAuthToken = new OAuthToken(accessToken.get(), OAuthProviderType.GITHUB.getProviderName());
 				loginService.login(oAuthToken);
 			}
+			
+			redirect = new URI("/demo");
 
 		} catch (Exception e) {
-			LOGGER.error("Unable to complete OAuth Handshake");
+			LOGGER.error("Unable to complete OAuth Handshake", e);
 		}
-		return "";
+		return Response.seeOther(redirect).build();
 	}
 }

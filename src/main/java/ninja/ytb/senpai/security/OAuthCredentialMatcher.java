@@ -6,9 +6,7 @@ import org.apache.shiro.authc.credential.CredentialsMatcher;
 
 public class OAuthCredentialMatcher implements CredentialsMatcher {
 
-	public boolean doCredentialsMatch(AuthenticationToken arg0, AuthenticationInfo arg1) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean doCredentialsMatch(AuthenticationToken authToken, AuthenticationInfo authInfo) {
+		return authToken.getCredentials().equals(authInfo.getCredentials());
 	}
-
 }
