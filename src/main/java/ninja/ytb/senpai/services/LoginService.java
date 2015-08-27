@@ -11,7 +11,7 @@ import com.google.inject.Inject;
 
 import ninja.ytb.senpai.models.AccessToken;
 import ninja.ytb.senpai.models.User;
-import ninja.ytb.senpai.oauth.OAuthToken;
+import ninja.ytb.senpai.security.OAuthUserToken;
 
 public class LoginService {
 
@@ -24,7 +24,7 @@ public class LoginService {
 		this.accessTokenService = accessTokenService;
 	}
 
-	public final User login(final OAuthToken oAuthToken) throws AuthenticationException {
+	public final User login(final OAuthUserToken oAuthToken) throws AuthenticationException {
 		User user = null;
 		Optional<AccessToken> optionalAccessToken = accessTokenService.retrieveAccessToken(oAuthToken);
 		if (optionalAccessToken.isPresent()) {

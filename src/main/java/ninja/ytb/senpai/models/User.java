@@ -11,7 +11,7 @@ import javax.persistence.Transient;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import ninja.ytb.senpai.model.base.GenericEntity;
-import ninja.ytb.senpai.oauth.OAuthToken;
+import ninja.ytb.senpai.security.OAuthUserToken;
 
 @Entity
 @Table(name = "siteuser")
@@ -34,7 +34,7 @@ public class User extends GenericEntity {
 	
 	@JsonIgnore
 	@Transient
-	private OAuthToken oAuthToken;
+	private OAuthUserToken oAuthToken;
 
 	public final String getEmail() {
 		return email;
@@ -76,11 +76,11 @@ public class User extends GenericEntity {
 		this.locked = locked;
 	}
 
-	public final OAuthToken getoAuthToken() {
+	public final OAuthUserToken getoAuthToken() {
 		return oAuthToken;
 	}
 
-	public final void setoAuthToken(final OAuthToken oAuthToken) {
+	public final void setoAuthToken(final OAuthUserToken oAuthToken) {
 		this.oAuthToken = oAuthToken;
 	}
 }

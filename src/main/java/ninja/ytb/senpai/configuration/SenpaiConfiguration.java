@@ -1,5 +1,8 @@
 package ninja.ytb.senpai.configuration;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
@@ -9,7 +12,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import io.dropwizard.Configuration;
 import io.dropwizard.db.DataSourceFactory;
-import ninja.ytb.senpai.oauth.GithubOAuthConfig;
+import io.kowalski.oaami.config.OAuthConfig;
 
 public class SenpaiConfiguration extends Configuration {
 	
@@ -25,8 +28,8 @@ public class SenpaiConfiguration extends Configuration {
     
     @Valid
     @NotNull
-    @JsonProperty("github")
-    private GithubOAuthConfig githubConfig = new GithubOAuthConfig();
+    @JsonProperty("oauth")
+    private Map<String, OAuthConfig> oauthProviders = new HashMap<String, OAuthConfig>();
 
 	public final DataSourceFactory getDatabase() {
 		return database;
@@ -44,11 +47,11 @@ public class SenpaiConfiguration extends Configuration {
 		this.shiro = shiro;
 	}
 
-	public final GithubOAuthConfig getGithubConfig() {
-		return githubConfig;
+	public final Map<String, OAuthConfig> getOauthProviders() {
+		return oauthProviders;
 	}
 
-	public final void setGithubConfig(final GithubOAuthConfig githubConfig) {
-		this.githubConfig = githubConfig;
+	public final void setOauthProviders(final Map<String, OAuthConfig> oauthProviders) {
+		this.oauthProviders = oauthProviders;
 	}
 }

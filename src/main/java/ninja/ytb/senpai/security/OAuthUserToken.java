@@ -1,4 +1,4 @@
-package ninja.ytb.senpai.oauth;
+package ninja.ytb.senpai.security;
 
 import java.io.Serializable;
 
@@ -7,7 +7,7 @@ import org.apache.shiro.authc.AuthenticationToken;
 import ninja.ytb.senpai.models.AccessToken;
 import ninja.ytb.senpai.models.User;
 
-public class OAuthToken implements AuthenticationToken, Serializable {
+public class OAuthUserToken implements AuthenticationToken, Serializable {
 	
 	private static final long serialVersionUID = -7962430369433372803L;
 	
@@ -16,12 +16,12 @@ public class OAuthToken implements AuthenticationToken, Serializable {
 	
 	public User user;
 	
-	public OAuthToken(final String accessToken, final String tokenProvider) {
+	public OAuthUserToken(final String accessToken, final String tokenProvider) {
 		this.accessToken = accessToken;
 		this.tokenProvider = tokenProvider;
 	}
 	
-	public OAuthToken(final AccessToken accessToken) {
+	public OAuthUserToken(final AccessToken accessToken) {
 		this(accessToken.getToken(), accessToken.getProvider());
 	}
 	

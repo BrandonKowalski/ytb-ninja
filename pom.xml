@@ -107,14 +107,14 @@
 			<version>4.0</version>
 		</dependency>
 		<dependency>
-			<groupId>org.apache.commons</groupId>
-			<artifactId>commons-collections4</artifactId>
-			<version>4.0</version>
+			<groupId>io.kowalski</groupId>
+			<artifactId>oaami</artifactId>
+			<version>0.0.1</version>
 		</dependency>
 		<dependency>
-			<groupId>org.apache.oltu.oauth2</groupId>
-			<artifactId>org.apache.oltu.oauth2.client</artifactId>
-			<version>1.0.0</version>
+			<groupId>org.bitbucket.b_c</groupId>
+			<artifactId>jose4j</artifactId>
+			<version>0.4.4</version>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>

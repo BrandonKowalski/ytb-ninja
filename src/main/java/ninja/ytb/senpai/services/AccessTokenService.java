@@ -13,7 +13,7 @@ import com.google.inject.Inject;
 import ninja.ytb.senpai.dao.AccessTokenDAO;
 import ninja.ytb.senpai.models.AccessToken;
 import ninja.ytb.senpai.models.User;
-import ninja.ytb.senpai.oauth.OAuthToken;
+import ninja.ytb.senpai.security.OAuthUserToken;
 
 public class AccessTokenService {
 	
@@ -28,7 +28,7 @@ public class AccessTokenService {
 		this.accessTokenDAO = accessTokenDAO;
 	}
 	
-	public final Optional<AccessToken> retrieveAccessToken(final OAuthToken authToken) {
+	public final Optional<AccessToken> retrieveAccessToken(final OAuthUserToken authToken) {
 		Optional<AccessToken> accessToken = Optional.empty();
 		
 		Map<String, Object> params = new HashMap<String, Object>();
@@ -37,7 +37,7 @@ public class AccessTokenService {
 		params.put("provider", authToken.getTokenProvider());
 		
 		Optional<List<AccessToken>> optionalAccessToken = 
-				Optional.of(accessTokenDAO.read("AccessToken.RetrieveByToken", Optional.of(params)));
+				Optional.ofNullable(accessTokenDAO.read("AccessToken.RetrieveByToken", Optional.of(params)));
 		
 		if (optionalAccessToken.isPresent() && !optionalAccessToken.get().isEmpty()) {
 			LOGGER.info("Found existing access token");

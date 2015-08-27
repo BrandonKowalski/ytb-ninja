@@ -15,14 +15,13 @@ import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.subject.SimplePrincipalCollection;
 
 import ninja.ytb.senpai.models.User;
-import ninja.ytb.senpai.oauth.OAuthToken;
 import ninja.ytb.senpai.util.ConstantsUtility;
 
 public class OAuthRealm extends AuthorizingRealm {
 
 	@Override
 	public boolean supports(final AuthenticationToken token) {
-		return token instanceof OAuthToken;
+		return token instanceof OAuthUserToken;
 	}
 
 	@Override
@@ -30,11 +29,11 @@ public class OAuthRealm extends AuthorizingRealm {
 		User user = (User) token.getPrincipal();
 
 		if (user == null) {
-			throw new UnknownAccountException("User doesn't exist in local database");
+			throw new UnknownAccountException(ConstantsUtility.ERROR_MESSAGES.getString("userDoesNotExist"));
 		} else if (!user.isActive()) {
-			throw new LockedAccountException("This account is inactive. Please contact your univFeed administrator.");
+			throw new LockedAccountException(ConstantsUtility.ERROR_MESSAGES.getString("userInactive"));
 		} else if (user.isLocked()) {
-			throw new LockedAccountException("This account is locked. Please contact your univFeed administrator.");
+			throw new LockedAccountException(ConstantsUtility.ERROR_MESSAGES.getString("userLocked"));
 		}
 
 		SimplePrincipalCollection principles = new SimplePrincipalCollection();

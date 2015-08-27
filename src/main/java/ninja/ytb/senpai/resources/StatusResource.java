@@ -23,5 +23,4 @@ public class StatusResource {
     public String sayHello() {
         return new String("Hello world");
     }
-
 }
