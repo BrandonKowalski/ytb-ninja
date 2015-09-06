@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 import org.apache.shiro.authc.AuthenticationToken;
 
-import ninja.ytb.senpai.models.AccessToken;
+import io.kowalski.oaami.models.OaamiToken;
 import ninja.ytb.senpai.models.User;
 
 public class OAuthUserToken implements AuthenticationToken, Serializable {
@@ -21,8 +21,8 @@ public class OAuthUserToken implements AuthenticationToken, Serializable {
 		this.tokenProvider = tokenProvider;
 	}
 	
-	public OAuthUserToken(final AccessToken accessToken) {
-		this(accessToken.getToken(), accessToken.getProvider());
+	public OAuthUserToken(final OaamiToken oaamiToken) {
+		this(oaamiToken.getAccessToken(), oaamiToken.getProvider().getProviderName());
 	}
 	
 	public final String getAccessToken() {

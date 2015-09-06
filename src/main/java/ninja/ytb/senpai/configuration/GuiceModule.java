@@ -12,6 +12,7 @@ import com.google.inject.TypeLiteral;
 import com.google.inject.name.Names;
 
 import io.dropwizard.hibernate.HibernateBundle;
+import io.kowalski.oaami.OaamiProvider;
 import io.kowalski.oaami.config.OAuthConfig;
 import ninja.ytb.senpai.inject.SessionFactoryProvider;
 
@@ -33,7 +34,7 @@ public class GuiceModule extends AbstractModule {
 	}
 
 	@Provides
-	public Map<String, OAuthConfig> providesSomethingThatNeedsConfiguration(SenpaiConfiguration configuration) {
+	public Map<OaamiProvider, OAuthConfig> oAuthConfigProvider(SenpaiConfiguration configuration) {
 		return configuration.getOauthProviders();
 	}
 }

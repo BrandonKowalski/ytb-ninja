@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 
 import com.google.inject.Inject;
 
+import io.kowalski.oaami.models.OaamiToken;
 import ninja.ytb.senpai.models.AccessToken;
 import ninja.ytb.senpai.models.User;
 import ninja.ytb.senpai.security.OAuthUserToken;
@@ -24,10 +25,11 @@ public class LoginService {
 		this.accessTokenService = accessTokenService;
 	}
 
-	public final User login(final OAuthUserToken oAuthToken) throws AuthenticationException {
+	public final User login(final OaamiToken token) throws AuthenticationException {
 		User user = null;
-		Optional<AccessToken> optionalAccessToken = accessTokenService.retrieveAccessToken(oAuthToken);
+		Optional<AccessToken> optionalAccessToken = accessTokenService.retrieveAccessToken(token);
 		if (optionalAccessToken.isPresent()) {
+			OAuthUserToken oAuthToken = new OAuthUserToken(token);
 			oAuthToken.setUser(optionalAccessToken.get().getUser());
 			SecurityUtils.getSubject().login(oAuthToken);
 		} else {

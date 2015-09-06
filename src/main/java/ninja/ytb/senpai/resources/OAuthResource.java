@@ -1,7 +1,6 @@
 package ninja.ytb.senpai.resources;
 
 import javax.ws.rs.GET;
-import javax.ws.rs.HeaderParam;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
@@ -11,6 +10,7 @@ import javax.ws.rs.core.Response;
 import com.google.inject.Inject;
 
 import io.dropwizard.hibernate.UnitOfWork;
+import io.kowalski.oaami.OaamiProvider;
 import ninja.ytb.senpai.annotations.SenpaiResource;
 import ninja.ytb.senpai.services.OAuthService;
 
@@ -25,10 +25,18 @@ public class OAuthResource {
 	public OAuthResource(final OAuthService oAuthService) {
 		this.oAuthService = oAuthService;
 	}
+	
+	@GET
+	@Path("/google")
+	@UnitOfWork
+	public final Response googleHandshake(@QueryParam("code") final String code) {
+		return oAuthService.handshake(code, OaamiProvider.GOOGLE);
+	}
 
 	@GET
+	@Path("/github")
 	@UnitOfWork
-	public final Response handshake(@QueryParam("code") final String code, final @HeaderParam("referer") String referer) {
-		return oAuthService.handshake(code, referer);
+	public final Response githubHandshake(@QueryParam("code") final String code) {
+		return oAuthService.handshake(code, OaamiProvider.GITHUB);
 	}
 }

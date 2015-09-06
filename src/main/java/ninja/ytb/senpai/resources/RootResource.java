@@ -12,6 +12,7 @@ import com.google.inject.Inject;
 
 import ninja.ytb.senpai.annotations.SenpaiResource;
 import ninja.ytb.senpai.util.ConstantsUtility;
+import ninja.ytb.senpai.views.LoginView;
 
 @SenpaiResource
 @Path("/")
@@ -20,6 +21,12 @@ public class RootResource {
 	
 	@Inject
 	public RootResource() {
+	}
+	
+	@GET
+	@Produces(MediaType.TEXT_HTML)
+	public final LoginView login() {
+		return new LoginView();
 	}
 
 	@GET

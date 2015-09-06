@@ -12,6 +12,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import io.dropwizard.Configuration;
 import io.dropwizard.db.DataSourceFactory;
+import io.kowalski.oaami.OaamiProvider;
 import io.kowalski.oaami.config.OAuthConfig;
 
 public class SenpaiConfiguration extends Configuration {
@@ -29,7 +30,7 @@ public class SenpaiConfiguration extends Configuration {
     @Valid
     @NotNull
     @JsonProperty("oauth")
-    private Map<String, OAuthConfig> oauthProviders = new HashMap<String, OAuthConfig>();
+    private Map<OaamiProvider, OAuthConfig> oauthProviders = new HashMap<OaamiProvider, OAuthConfig>();
 
 	public final DataSourceFactory getDatabase() {
 		return database;
@@ -47,11 +48,11 @@ public class SenpaiConfiguration extends Configuration {
 		this.shiro = shiro;
 	}
 
-	public final Map<String, OAuthConfig> getOauthProviders() {
+	public final Map<OaamiProvider, OAuthConfig> getOauthProviders() {
 		return oauthProviders;
 	}
 
-	public final void setOauthProviders(final Map<String, OAuthConfig> oauthProviders) {
+	public final void setOauthProviders(final Map<OaamiProvider, OAuthConfig> oauthProviders) {
 		this.oauthProviders = oauthProviders;
 	}
 }

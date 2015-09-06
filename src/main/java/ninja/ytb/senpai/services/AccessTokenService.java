@@ -10,10 +10,10 @@ import org.slf4j.LoggerFactory;
 
 import com.google.inject.Inject;
 
+import io.kowalski.oaami.models.OaamiToken;
 import ninja.ytb.senpai.dao.AccessTokenDAO;
 import ninja.ytb.senpai.models.AccessToken;
 import ninja.ytb.senpai.models.User;
-import ninja.ytb.senpai.security.OAuthUserToken;
 
 public class AccessTokenService {
 	
@@ -28,13 +28,13 @@ public class AccessTokenService {
 		this.accessTokenDAO = accessTokenDAO;
 	}
 	
-	public final Optional<AccessToken> retrieveAccessToken(final OAuthUserToken authToken) {
+	public final Optional<AccessToken> retrieveAccessToken(final OaamiToken token) {
 		Optional<AccessToken> accessToken = Optional.empty();
 		
 		Map<String, Object> params = new HashMap<String, Object>();
 		
-		params.put("token", authToken.getAccessToken());
-		params.put("provider", authToken.getTokenProvider());
+		params.put("token", token.getAccessToken());
+		params.put("provider", token.getProvider().getProviderName());
 		
 		Optional<List<AccessToken>> optionalAccessToken = 
 				Optional.ofNullable(accessTokenDAO.read("AccessToken.RetrieveByToken", Optional.of(params)));
@@ -48,8 +48,8 @@ public class AccessTokenService {
 			User newUser = userService.createUser();
 			
 			AccessToken at = new AccessToken();
-			at.setToken(authToken.getAccessToken());
-			at.setProvider(authToken.getTokenProvider());
+			at.setToken(token.getAccessToken());
+			at.setProvider(token.getProvider().getProviderName());
 			at.setUser(newUser);
 			
 			accessToken = Optional.of(accessTokenDAO.upsert(at));

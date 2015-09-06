@@ -10,6 +10,7 @@ import io.dropwizard.Application;
 import io.dropwizard.hibernate.HibernateBundle;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
+import io.dropwizard.views.ViewBundle;
 import ninja.ytb.senpai.configuration.GuiceModule;
 import ninja.ytb.senpai.configuration.SenpaiConfiguration;
 import ninja.ytb.senpai.configuration.SepaiHibernateBundle;
@@ -39,6 +40,7 @@ public class Senpai extends Application<SenpaiConfiguration> {
 	public void initialize(final Bootstrap<SenpaiConfiguration> bootstrap) {
 		bootstrap.addBundle(hibernateBundle);
 		bootstrap.addBundle(shiro);
+		bootstrap.addBundle(new ViewBundle<SenpaiConfiguration>());
 		bootstrap.addBundle(GuiceBundle.<SenpaiConfiguration> newBuilder()
 				.addModule(guiceModule)
 				.setConfigClass(SenpaiConfiguration.class)

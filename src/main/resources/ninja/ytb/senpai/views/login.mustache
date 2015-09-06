@@ -1,0 +1,17 @@
+<html>
+<head>
+  <title>YTB Ninja</title>
+  <meta name="google-signin-client_id" content="219289209550-gccet6uh1nr5252ssik3mp99ktep410p.apps.googleusercontent.com">
+</head>
+<body>
+  <div class="g-signin2" data-onsuccess="onSignIn"></div>
+  Hello world.
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script>
+  	function onSignIn(googleUser) {
+  		var id_token = googleUser.getAuthResponse().id_token;
+  		console.log(id_token);
+	}
+  </script>
+</body>
+</html>
