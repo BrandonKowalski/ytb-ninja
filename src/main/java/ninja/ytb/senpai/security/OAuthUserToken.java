@@ -22,7 +22,7 @@ public class OAuthUserToken implements AuthenticationToken, Serializable {
 	}
 	
 	public OAuthUserToken(final OaamiToken oaamiToken) {
-		this(oaamiToken.getAccessToken(), oaamiToken.getProvider().getProviderName());
+		this(oaamiToken.accessToken, oaamiToken.provider.providerName);
 	}
 	
 	public final String getAccessToken() {

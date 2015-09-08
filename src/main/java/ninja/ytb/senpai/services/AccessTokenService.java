@@ -33,8 +33,8 @@ public class AccessTokenService {
 		
 		Map<String, Object> params = new HashMap<String, Object>();
 		
-		params.put("token", token.getAccessToken());
-		params.put("provider", token.getProvider().getProviderName());
+		params.put("token", token.accessToken);
+		params.put("provider", token.provider.providerName);
 		
 		Optional<List<AccessToken>> optionalAccessToken = 
 				Optional.ofNullable(accessTokenDAO.read("AccessToken.RetrieveByToken", Optional.of(params)));
@@ -48,8 +48,8 @@ public class AccessTokenService {
 			User newUser = userService.createUser();
 			
 			AccessToken at = new AccessToken();
-			at.setToken(token.getAccessToken());
-			at.setProvider(token.getProvider().getProviderName());
+			at.setToken(token.accessToken);
+			at.setProvider(token.provider.providerName);
 			at.setUser(newUser);
 			
 			accessToken = Optional.of(accessTokenDAO.upsert(at));
