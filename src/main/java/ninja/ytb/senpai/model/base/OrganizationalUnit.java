@@ -8,8 +8,10 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 import org.hibernate.annotations.NamedQueries;
 import org.hibernate.annotations.NamedQuery;
@@ -31,6 +33,7 @@ import ninja.ytb.senpai.util.ConstantsUtility;
 })
 
 @Entity
+@Table(name = "organizational_unit")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "type", discriminatorType = DiscriminatorType.STRING)
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
@@ -52,7 +55,12 @@ public abstract class OrganizationalUnit extends GenericEntity {
 			@Type(value = Team.class, name = ConstantsUtility.TEAM_DISCRIMINATOR),
 			@Type(value = Project.class, name = ConstantsUtility.PROJECT_DISCRIMINATOR) })
 	@OneToMany(fetch = FetchType.EAGER)
+	@JoinTable(name = "organizational_unit_hierarchy")
 	private Collection<OrganizationalUnit> subordinates;
+	
+	public OrganizationalUnit() {
+		
+	}
 
 	public final String getName() {
 		return name;

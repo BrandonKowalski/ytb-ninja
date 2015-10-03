@@ -20,5 +20,6 @@ public class Team extends OrganizationalUnit {
 	private static final long serialVersionUID = 7412914772548256588L;
 	
 	public Team() {
+		
 	}
 }

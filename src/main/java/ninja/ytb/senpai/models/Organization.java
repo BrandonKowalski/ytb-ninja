@@ -20,6 +20,6 @@ public class Organization extends OrganizationalUnit {
 	private static final long serialVersionUID = 3102447266964981637L;
 	
 	public Organization() {
+		
 	}
-
 }

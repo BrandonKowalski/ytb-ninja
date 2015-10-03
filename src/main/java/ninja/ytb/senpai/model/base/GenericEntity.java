@@ -22,6 +22,10 @@ public abstract class GenericEntity implements Serializable {
 	private UUID id;
 	
 	private boolean active = true;
+	
+	public GenericEntity() {
+		
+	}
 
 	public final UUID getId() {
 		return id;
@@ -37,5 +41,5 @@ public abstract class GenericEntity implements Serializable {
 
 	public final void setActive(final boolean active) {
 		this.active = active;
-	}
+	}	
 }

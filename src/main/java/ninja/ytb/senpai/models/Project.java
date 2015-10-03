@@ -20,5 +20,6 @@ public class Project extends OrganizationalUnit {
 	private static final long serialVersionUID = -3488046703025375071L;
 	
 	public Project() {
+		
 	}
 }

@@ -35,6 +35,10 @@ public class User extends GenericEntity {
 	@JsonIgnore
 	@Transient
 	private OAuthUserToken oAuthToken;
+	
+	public User() {
+		
+	}
 
 	public final String getEmail() {
 		return email;

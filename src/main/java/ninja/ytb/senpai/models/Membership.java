@@ -31,6 +31,10 @@ public class Membership implements Serializable {
 	private OrganizationalUnit organizationalUnit;
 
 	private Character role;
+	
+	public Membership() {
+		
+	}
 
 	public final User getUser() {
 		return user;
@@ -40,11 +44,11 @@ public class Membership implements Serializable {
 		this.user = user;
 	}
 
-	public final OrganizationalUnit getOrganizationaUnit() {
+	public final OrganizationalUnit getOrganizationalUnit() {
 		return organizationalUnit;
 	}
 
-	public final void setOrganizationaUnit(final OrganizationalUnit organizationalUnit) {
+	public final void setOrganizationalUnit(final OrganizationalUnit organizationalUnit) {
 		this.organizationalUnit = organizationalUnit;
 	}
 

@@ -13,8 +13,6 @@ import com.google.inject.Inject;
 import io.kowalski.oaami.Oaami;
 import io.kowalski.oaami.OaamiProvider;
 import io.kowalski.oaami.models.OaamiToken;
-import io.kowalski.oaami.models.OaamiUserInfo;
-import io.kowalski.oaami.services.GoogleService;
 import ninja.ytb.senpai.util.ConstantsUtility;
 
 public class OAuthService {
@@ -36,10 +34,10 @@ public class OAuthService {
 			Optional<OaamiToken> token = oaami.retrieveToken(tempCode, provider);
 			
 			if (token.isPresent()) {
-				Optional<OaamiUserInfo> userInfo = new GoogleService().retrieveUserInfo(token.get());
-				if (userInfo.isPresent()) {
-					token.get().userInfo = userInfo;
-				}
+				// Optional<OaamiUserInfo> userInfo = new GoogleService().retrieveUserInfo(token.get());
+				// if (userInfo.isPresent()) {
+				// token.get().userInfo = userInfo;
+				// }
 				loginService.login(token.get());
 			}
 		} catch (AuthenticationException e) {

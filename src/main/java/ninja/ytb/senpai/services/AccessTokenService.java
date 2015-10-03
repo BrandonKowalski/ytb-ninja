@@ -45,12 +45,9 @@ public class AccessTokenService {
 		} else {
 			LOGGER.info("No existing access token. Creating AT & new User.");
 			
-			User newUser = userService.createUser();
+			User newUser = userService.createBlank();
 			
-			AccessToken at = new AccessToken();
-			at.setToken(token.accessToken);
-			at.setProvider(token.provider.providerName);
-			at.setUser(newUser);
+			AccessToken at = new AccessToken(token.accessToken, token.provider.providerName, newUser);
 			
 			accessToken = Optional.of(accessTokenDAO.upsert(at));
 		}

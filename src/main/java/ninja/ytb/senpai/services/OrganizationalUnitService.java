@@ -1,6 +1,5 @@
 package ninja.ytb.senpai.services;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -45,10 +44,7 @@ public class OrganizationalUnitService<T extends OrganizationalUnit> {
 	private void updateSuperiorSubordinates(T potentialSubordinate) {
 		if (potentialSubordinate.getSuperior() != null) {
 			T superior = dao.find(potentialSubordinate.getSuperior().getId());
-			
-			if (superior.getSubordinates() == null) {
-				superior.setSubordinates(Collections.<OrganizationalUnit> emptySet());
-			}
+
 			superior.getSubordinates().add(potentialSubordinate);
 			dao.upsert(superior);		
 		}

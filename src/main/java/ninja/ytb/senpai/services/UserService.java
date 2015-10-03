@@ -5,7 +5,7 @@ import com.google.inject.Inject;
 import ninja.ytb.senpai.dao.UserDAO;
 import ninja.ytb.senpai.models.User;
 
-public class UserService {
+public class UserService extends AbstractService<User> {
 	
 	private final UserDAO userDAO;
 	
@@ -14,7 +14,11 @@ public class UserService {
 		this.userDAO = userDAO;
 	}
 	
-	public final User createUser() {
+	public final User upsert(final User user) {
+		return userDAO.upsert(user);
+	}
+	
+	public final User createBlank() {
 		return userDAO.upsert(new User());
 	}
 
